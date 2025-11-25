@@ -5,20 +5,29 @@ To design and deploy a "Chat with LLM" application by leveraging the Gradio Bloc
 
 ### PROBLEM STATEMENT:
 
+The challenge is to move beyond a simple single-turn question/answer interface and design a **multi-turn conversational** UI. This requires: 1) capturing and formatting **chat history** into a context-aware prompt for the LLM; 2) implementing the UI using the flexible **Gradio `Blocks`** framework with a dedicated **`gr.Chatbot`** component; and 3) adding optional **advanced controls** (like system messages and temperature) for a richer user experience.
+
+-----
+
 ### DESIGN STEPS:
 
 #### STEP 1:
+Install libraries (like `text_generation` and `gradio`), configure the **Hugging Face API key**, and initialize the **LLM client** (e.g., FalconLM) for communication.
 
 #### STEP 2:
+Create an initial **`gr.Interface`** demo with a **`gr.Textbox`** prompt and a **`gr.Slider`** for `max_new_tokens` to verify the core LLM connection.
 
 #### STEP 3:
+Switch to the **`gr.Blocks`** framework and implement the conversational UI using the **`gr.Chatbot`** component, text input, and submit/clear buttons.
 
 #### STEP 4:
+Develop the **`format_chat_prompt`** function to serialize the user's new message and the **`chat_history`** list into the specific multi-turn format required by the LLM.
 
 #### STEP 5:
+Update the **`respond`** function to use the contextual prompt, call the LLM, append the LLM's response to the **`chat_history`**, and then update the **`gr.Chatbot`**.
 
 #### STEP 6:
-
+Integrate **System Instruction** (**`gr.Textbox`**) and **Temperature** (**`gr.Slider`**) controls, group them using **`gr.Accordion`**, and implement **response streaming** for real-time output.
 
 ### PROGRAM:
 
@@ -155,6 +164,14 @@ gr.close_all()
 ```
 
 ### OUTPUT:
+
+<img width="594" height="594" alt="image" src="https://github.com/user-attachments/assets/21c483ed-cd9a-4135-86e4-331fddd29305" />
+
+<img width="575" height="590" alt="image" src="https://github.com/user-attachments/assets/ba839636-1ca8-4b07-b6a4-03b8fb92115b" />
+
+<img width="594" height="577" alt="image" src="https://github.com/user-attachments/assets/0834b18c-5cf8-4c75-a1c8-bf29df67e5ef" />
+
+<img width="581" height="569" alt="image" src="https://github.com/user-attachments/assets/09d37084-844e-4edb-aa84-1c89d0c26c18" />
 
 ### RESULT:
 Thus, a a "Chat with LLM" application by leveraging the Gradio Blocks UI framework is designed and deployed successfully.
